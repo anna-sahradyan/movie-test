@@ -9,6 +9,9 @@ export const MovieDetail: React.FC = () => {
     const {id} = useParams<{ id: string }>();
     const dispatch = useAppDispatch();
     const {movieDetails: movieDetail, loading, error} = useAppSelector((state) => state.movies);
+    const imageUrl = movieDetail?.poster_path
+        ? `https://image.tmdb.org/t/p/w500/${movieDetail?.poster_path}`
+        : '/clip.jpg';
 
     useEffect(() => {
         if (id) {
@@ -29,7 +32,7 @@ export const MovieDetail: React.FC = () => {
             {movieDetail && (
                 <div className={'container'}>
                     <img
-                        src={`https://image.tmdb.org/t/p/w500/${movieDetail.poster_path}`}
+                        src={imageUrl}
                         alt={movieDetail.title}
                     />
                     <h1>{movieDetail.title}</h1>

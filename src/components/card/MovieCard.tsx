@@ -8,11 +8,14 @@ interface MovieCardProps {
 }
 
 export const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
+    const imageUrl = movie.poster_path
+        ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+        : '/clip.jpg';
     return (
         <div key={movie.id} className={style.movieItem}>
             <Link to={`/movie/${movie.id}`} className={style.movieCardLink}>
                 <img
-                    src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                    src={imageUrl}
                     alt={movie.title}
                     className={style.movieImage}
                 />
