@@ -13,8 +13,10 @@ export const fetchMovies = async (searchTerm: string, page: number = 1) => {
                 page: page,
             },
         });
+        console.log("API fetchMovies: URL = ", response.config.url, ", params = ", response.config.params); //DEBUG
         return response.data;
     } catch (error) {
+        console.error("API fetchMovies error:", error); //DEBUG
         throw new Error('Failed to fetch movies');
     }
 };
@@ -27,8 +29,10 @@ export const fetchPopularMovies = async (page: number = 1) => {
                 page: page,
             },
         });
+        console.log("API fetchPopularMovies: URL = ", response.config.url, ", params = ", response.config.params); //DEBUG
         return response.data;
     } catch (error) {
+        console.error("API fetchPopularMovies error:", error); //DEBUG
         throw new Error('Failed to fetch popular movies');
     }
 };

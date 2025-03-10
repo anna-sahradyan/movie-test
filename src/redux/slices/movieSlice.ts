@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { searchMovies, getMovieDetails, fetchPopular } from "./thunks/thunk";
-import { MoviesState } from "./thunks/types.ts";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {searchMovies, getMovieDetails, fetchPopular} from "./thunks/thunk";
+import {MoviesState} from "./thunks/types.ts";
 
 const initialState: MoviesState = {
     movies: [],
@@ -21,8 +21,9 @@ const moviesSlice = createSlice({
             state.currentPage = action.payload;
         },
         setSearchTerm: (state, action: PayloadAction<string>) => {
+            console.log("movieSlice: setSearchTerm reducer, searchTerm = ", action.payload); //DEBUG
             state.searchTerm = action.payload;
-            state.currentPage = 1;
+            state.currentPage = 1; // Reset to first page on new search
         },
 
     },
@@ -77,6 +78,5 @@ const moviesSlice = createSlice({
     },
 });
 
-export const { setSearchTerm,setCurrentPage } = moviesSlice.actions;
+export const {setSearchTerm, setCurrentPage} = moviesSlice.actions;
 export default moviesSlice.reducer;
-

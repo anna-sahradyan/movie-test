@@ -16,6 +16,12 @@ export const FormSearch: React.FC = () => {
         }
     };
 
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === 'Enter') {
+            handleSearch();
+        }
+    };
+
     return (
         <div className={style.movieSearch}>
             <input
@@ -24,6 +30,7 @@ export const FormSearch: React.FC = () => {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Поиск фильмов..."
+                onKeyDown={handleKeyDown}
             />
             <button onClick={handleSearch} className={style.icon}><Search/></button>
         </div>
