@@ -1,0 +1,26 @@
+.footer {
+  position: relative;
+  margin-top: auto;
+  width: 100%;
+  min-height: 80px;
+  background-color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+
+
+
+}
+
+.inner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  max-width: 1106px;
+  margin: auto;
+  @media (max-width: 1000px) {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,83 @@
+.movieDetail {
+  background-color: #f4f4f4;
+  padding: 20px 20px 0;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1106px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+
+  img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-size: 2rem;
+    color: #2c3e50;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 1rem;
+    color: #7f8c8d;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  .movieDetailsWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+
+    .movieDetailsLeft {
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .movieDetailsRight {
+      max-width: 300px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+
+  .genreList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .genre {
+    background-color: #34495e;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+
+  .rating {
+    font-size: 1.2rem;
+    color: #f39c12;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .releaseDate {
+    font-size: 1rem;
+    color: #16a085;
+  }
+}
+

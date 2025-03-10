@@ -1,0 +1,52 @@
+.container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+}
+
+form {
+  position: relative;
+}
+
+
+.movieSearch {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 30px 0;
+
+
+
+}
+
+.inputField {
+  position: relative;
+  width: 100%;
+  padding: 15px 18px;
+  max-width: 80%;
+  border: 1px solid var(--black-400);
+  border-radius: 12px;
+  display: flex;
+  margin: auto;
+  align-items: center;
+
+  @media (max-width: 374px) {
+    max-width: 80%;
+  }
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  right: calc(5% + 60px);
+  transform: translateY(-50%);
+  pointer-events: none;
+  width: 24px;
+  height: 24px;
+
+}
+
