@@ -43,7 +43,7 @@
   align-items: center;
   margin: 40px auto;
   color: var(--red-500);
-  font-size: 25px;
+  font-size: clamp(1.125rem, 2.5vw, 1.5625rem);
   line-height: 35px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 800;

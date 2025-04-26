@@ -3,3 +3,4 @@
 
 https://gregarious-buttercream-0a650a.netlify.app/
 
+npm run dev

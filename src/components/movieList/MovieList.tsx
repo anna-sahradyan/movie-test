@@ -23,17 +23,12 @@ export const MovieList: React.FC = () => {
     };
 
     useEffect(() => {
-        if (!searchTerm) {
+        if (searchTerm) {
+            dispatch(searchMovies({ searchTerm, page: currentPage }));
+        } else {
             dispatch(fetchPopular(currentPage));
         }
     }, [dispatch, currentPage, searchTerm]);
-
-    useEffect(() => {
-        if (searchTerm) {
-
-            dispatch(searchMovies({searchTerm, page: 1}));
-        }
-    }, [dispatch, searchTerm]);
 
     return (
         <div className={style.movieListContainer}>
@@ -42,8 +37,8 @@ export const MovieList: React.FC = () => {
             {error && <p>Ошибка: {error}</p>}
 
             <div className={style.mob}>
-                {movies.length === 0 && !loading && (
-                    <p className={style.error}>Нет фильмов для отображения.</p>
+                {movies.length === 0 && loading === "succeeded" && searchTerm && (
+                    <p className={style.error}>Фильмы не найдены по запросу: «{searchTerm}»</p>
                 )}
 
                 <div className={style.movieList}>

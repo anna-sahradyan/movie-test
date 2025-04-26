@@ -1,5 +1,5 @@
 .movieDetail {
-  background-color: #f4f4f4;
+  background-color: var(--grey-100);
   padding: 20px 20px 0;
 
   .container {
@@ -13,22 +13,27 @@
 
   img {
     width: 100%;
-    max-width: 500px;
+    max-width: 400px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    &:hover {
+      transform: scale(1.02);
+    }
   }
 
   h1 {
     font-size: 2rem;
-    color: #2c3e50;
+    color: var(--darkBlue);
     font-weight: bold;
     margin-bottom: 20px;
   }
 
   p {
     font-size: 1rem;
-    color: #7f8c8d;
+    color: var(--darkBlue);
     line-height: 1.5;
     margin-bottom: 10px;
   }
@@ -61,7 +66,7 @@
   }
 
   .genre {
-    background-color: #34495e;
+    background-color: var(--darkBlue);
     color: white;
     padding: 8px 12px;
     border-radius: 4px;

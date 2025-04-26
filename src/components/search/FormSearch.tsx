@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {useAppDispatch} from "../../redux/store.ts";
 import {setSearchTerm} from "../../redux/slices/movieSlice.ts";
 import {searchMovies} from "../../redux/slices/thunks/thunk.ts";
@@ -9,10 +9,23 @@ export const FormSearch: React.FC = () => {
     const [query, setQuery] = useState("");
     const dispatch = useAppDispatch();
 
+    useEffect(() => {
+        const trimmed = query.trim();
+        if (trimmed) {
+            const timeout = setTimeout(() => {
+                dispatch(setSearchTerm(trimmed));
+                dispatch(searchMovies({searchTerm: trimmed, page: 1}));
+            }, 500); // debounce — 500ms
+
+            return () => clearTimeout(timeout); // отмена предыдущего таймера при новом вводе
+        }
+    }, [query, dispatch]);
+
     const handleSearch = () => {
-        if (query.trim()) {
-            dispatch(setSearchTerm(query));
-            dispatch(searchMovies({searchTerm: query, page: 1}));
+        const trimmed = query.trim();
+        if (trimmed) {
+            dispatch(setSearchTerm(trimmed));
+            dispatch(searchMovies({searchTerm: trimmed, page: 1}));
         }
     };
 
