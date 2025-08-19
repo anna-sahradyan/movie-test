@@ -1,4 +1,4 @@
-name: CI/CD Deploy
+name: MoveProject Movie CI/CD
 
 on:
   push:
@@ -21,20 +21,24 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       - name: Build application
         run: npm run build
 
-      - name: Set target directory
+      - name: Set target directory and URL
         id: setdir
         run: |
           if [ "${GITHUB_REF##*/}" = "dev" ]; then
             echo "DIR=dist-dev" >> $GITHUB_ENV
+            echo "URL=https://dev.movie.yourdomain.com" >> $GITHUB_ENV
           elif [ "${GITHUB_REF##*/}" = "test" ]; then
             echo "DIR=dist-test" >> $GITHUB_ENV
+            echo "URL=https://test.movie.yourdomain.com" >> $GITHUB_ENV
           else
             echo "DIR=dist" >> $GITHUB_ENV
+            echo "URL=https://movie.yourdomain.com" >> $GITHUB_ENV
+          fi
 
       - name: Remove old version on server
         uses: appleboy/ssh-action@master
