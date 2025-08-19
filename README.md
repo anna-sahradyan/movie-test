@@ -3,7 +3,6 @@
 
 
 
-
-https://tranquil-biscochitos-9dcab7.netlify.app/
+https://sprightly-starburst-f38d6d.netlify.app/
 
 npm run dev
