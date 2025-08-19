@@ -1,0 +1,56 @@
+name: CI/CD Deploy
+
+on:
+  push:
+    branches:
+      - dev
+      - test
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build application
+        run: npm run build
+
+      - name: Set target directory
+        id: setdir
+        run: |
+          if [ "${GITHUB_REF##*/}" = "dev" ]; then
+            echo "DIR=dist-dev" >> $GITHUB_ENV
+          elif [ "${GITHUB_REF##*/}" = "test" ]; then
+            echo "DIR=dist-test" >> $GITHUB_ENV
+          else
+            echo "DIR=dist" >> $GITHUB_ENV
+
+      - name: Remove old version on server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.PASSPHRASE }}
+          script: |
+            rm -rf /home/user/${{ env.DIR }}
+            mkdir -p /home/user/${{ env.DIR }}
+
+      - name: Copy build files to server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.PASSPHRASE }}
+          source: "dist"
+          target: "/home/user/${{ env.DIR }}"
